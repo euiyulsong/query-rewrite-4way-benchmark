@@ -7,7 +7,7 @@ Reproducible experiment using **GPT-6 Luna** (`gpt-6-luna`) on **100 distinct co
 
 The evaluation set is frozen with seed 42 and includes 100 samples *per dataset*, not 100 total. All conditions receive exactly the same 100 questions and history. Same-data and cross-data Few-shot demonstrations come from original **training splits**. Generic Few-shot uses separately authored fixed examples.
 
-**Important:** This package contains runnable evaluation code, **not precomputed GPT-6 Luna results**. Real API calls require an OpenAI API key, model access, internet, and downloaded retriever weights. There is no fabricated score file.
+**Important:** A first GPT-6 Luna run is recorded under [`results/`](results/EXPERIMENT.md). It includes retrieval/QA evaluation using the explicitly described CANARD closed pool and QReCC answer-as-document proxy; QReCC proxy scores are not official retrieval results. Reproduction requires an OpenAI API key, model access, internet, and downloaded retriever weights.
 
 ## 1. Experimental conditions
 
@@ -127,7 +127,7 @@ That JSONL must contain `{ "id": "<original QReCC Truth_passages ID>", "text": "
 
 ## 6. How to analyze decreases
 
-Open `results/report.html` locally. It contains results by dataset, paired difference confidence intervals, and searchable per-query rewrite/answer comparisons with a **Few-shot loss** filter and **Few-shot type** selector (Same-data, Cross-data, Generic).
+Open `results/report.html` locally. It contains rewrite quality, retrieval ranking and answer metrics by dataset, paired difference confidence intervals, and searchable per-query rewrite/answer comparisons with a **Few-shot loss** filter and **Few-shot type** selector (Same-data, Cross-data, Generic). For the recorded retrieval outcome and protocol caveats, see [`results/EXPERIMENT.md`](results/EXPERIMENT.md).
 
 The summary JSON includes `case_level_comparison` with wins, losses and ties for same-shot, cross-shot, and generic-shot relative to zero-shot on `rewrite_f1`, `mrr_at_10` and `answer_em`. Paired bootstrap intervals are computed separately for each dataset.
 
