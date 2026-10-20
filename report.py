@@ -38,20 +38,20 @@ def generate(out_dir):
         parts.append(f'<div class="banner">{esc(w)}</div>')
     ordered=['raw_question','zero_shot','same_3shot','cross_3shot','generic_3shot']
     for ds in ('qrecc','canard'):
-        parts.append(f'<h2>{ds.upper()}</h2><div class="panel"><table><thead><tr><th>Condition</th><th>Rewrite F1</th><th>Recall@5</th><th>MRR@10</th><th>nDCG@10</th><th>Answer EM</th><th>Answer F1</th><th>Rewrite ms</th><th>Input tokens</th><th>Total ms</th></tr></thead><tbody>')
+        parts.append(f'<h2>{ds.upper()}</h2><div class="panel"><table><thead><tr><th>Condition</th><th>Rewrite F1</th><th>Recall@5</th><th>MRR@10</th><th>nDCG@10</th><th>Answer EM</th><th>Answer Subspan EM</th><th>Answer F1</th><th>Rewrite ms</th><th>Input tokens</th><th>Total ms</th></tr></thead><tbody>')
         for mode in ordered:
             r=summary['groups'].get(f'{ds}/{mode}')
             if not r: continue
             parts.append('<tr><td><span class="pill">'+esc(mode)+'</span></td>'+''.join(
                 f'<td class="metric">{esc(fmt(r.get(key),pct))}</td>' for key,pct in (
                 ('rewrite_f1',True),('recall_at_5',True),('mrr_at_10',True),
-                ('ndcg_at_10',True),('answer_em',True),('answer_f1',True),
+                ('ndcg_at_10',True),('answer_em',True),('answer_subspan_em',True),('answer_f1',True),
                 ('rewrite_latency_ms',False),('rewrite_input_tokens',False),('total_latency_ms',False)))+'</tr>')
         parts.append('</tbody></table></div>')
         parts.append('<div class="panel"><h3>Paired differences (candidate minus zero-shot)</h3><table><tr><th>Condition</th><th>Metric</th><th>Delta</th><th>95% bootstrap CI</th><th>Wins / Losses / Ties</th></tr>')
         for mode in ('same_3shot','cross_3shot','generic_3shot'):
             d=summary['paired_differences'].get(f'{ds}/{mode}_minus_zero_shot',{})
-            for metric in ('rewrite_f1','mrr_at_10','answer_em'):
+            for metric in ('rewrite_f1','mrr_at_10','answer_em','answer_subspan_em'):
                 rec=d.get(metric,{})
                 case=summary.get('case_level_comparison',{}).get(f'{ds}/{mode}/{metric}',{})
                 delta=rec.get('delta')
@@ -92,7 +92,7 @@ def generate(out_dir):
         for mode in ordered:
             r=data.get(mode)
             if not r:continue
-            parts.append(f'<div class="c"><b>{esc(mode)}</b> · MRR@10 {esc(fmt(r.get("mrr_at_10")))} · Rewrite F1 {esc(fmt(r.get("rewrite_f1")))} · Answer EM {esc(fmt(r.get("answer_em")))}<div>{esc(r.get("rewrite"))}</div>'
+            parts.append(f'<div class="c"><b>{esc(mode)}</b> · MRR@10 {esc(fmt(r.get("mrr_at_10")))} · Rewrite F1 {esc(fmt(r.get("rewrite_f1")))} · Answer EM {esc(fmt(r.get("answer_em")))} · Answer Subspan EM {esc(fmt(r.get("answer_subspan_em")))}<div>{esc(r.get("rewrite"))}</div>'
                          + (f'<div><b>Predicted answer:</b> {esc(r.get("predicted_answer"))}</div>' if r.get('predicted_answer') else '')+'</div>')
         parts.append('</details>')
     parts.append('''</div><script>function filterRows(){const ds=document.getElementById('dataset').value,s=document.getElementById('search').value.toLowerCase(),st=document.getElementById('status').value,cmp=document.getElementById('compare').value;

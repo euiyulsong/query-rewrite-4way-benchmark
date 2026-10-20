@@ -28,43 +28,43 @@ Among rewritten queries, few-shot prompting does **not** show a reliable retriev
 
 ## Reader answer quality: CANARD
 
-| Condition | Answer EM | Answer token F1 | Δ Answer EM vs zero-shot (95% paired bootstrap CI) |
-| --- | ---: | ---: | ---: |
-| Raw question | 0.01 | 0.09239 | -0.02 [-0.06, +0.02] |
-| Zero-shot | 0.03 | 0.24429 | baseline |
-| Same-data 3-shot | 0.02 | 0.24897 | -0.01 [-0.03, 0.00] |
-| Cross-data 3-shot | 0.04 | 0.23403 | +0.01 [0.00, +0.03] |
-| Generic 3-shot | 0.02 | 0.24300 | -0.01 [-0.03, 0.00] |
+| Condition | Answer EM | Answer Subspan EM | Answer token F1 | Δ Subspan EM vs zero-shot (95% paired bootstrap CI) |
+| --- | ---: | ---: | ---: | --- |
+| Raw question | 0.01 | 0.01 | 0.09239 | -0.10 [-0.17, -0.04] |
+| Zero-shot | 0.03 | 0.11 | 0.24429 | baseline |
+| Same-data 3-shot | 0.02 | 0.10 | 0.24897 | -0.01 [-0.05, +0.02] |
+| Cross-data 3-shot | 0.04 | 0.10 | 0.23403 | -0.01 [-0.05, +0.02] |
+| Generic 3-shot | 0.02 | 0.10 | 0.24300 | -0.01 [-0.05, +0.02] |
 
-The closed-pool retriever ranks gold contexts highly, but the answer reader's strict EM and token F1 remain low. None of the few-shot answer-EM differences from zero-shot is distinguishable from zero by the paired bootstrap interval in this run.
+The closed-pool retriever ranks gold contexts highly, but the answer reader's strict EM, subspan EM, and token F1 remain low. Few-shot subspan-EM differences from zero-shot have paired intervals including zero.
 
 ## QReCC reader output (proxy evidence only)
 
 Reader metrics below use the same synthetic answer-as-document proxy corpus; they are not official QReCC QA scores.
 
-| Condition | Proxy MRR@10 | Recall@5 | Answer EM | Answer token F1 |
-| --- | ---: | ---: | ---: | ---: |
-| Raw question | 0.82160 | 0.94 | 0.05 | 0.29898 |
-| Zero-shot | 0.98833 | 1.00 | 0.02 | 0.48005 |
-| Same-data 3-shot | 0.97833 | 0.99 | 0.01 | 0.45129 |
-| Cross-data 3-shot | 0.98667 | 1.00 | 0.03 | 0.49679 |
-| Generic 3-shot | 0.98500 | 0.99 | 0.03 | 0.49952 |
+| Condition | Proxy MRR@10 | Recall@5 | Answer EM | Answer Subspan EM | Answer token F1 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Raw question | 0.82160 | 0.94 | 0.05 | 0.06 | 0.29898 |
+| Zero-shot | 0.98833 | 1.00 | 0.02 | 0.03 | 0.48005 |
+| Same-data 3-shot | 0.97833 | 0.99 | 0.01 | 0.02 | 0.45129 |
+| Cross-data 3-shot | 0.98667 | 1.00 | 0.03 | 0.04 | 0.49679 |
+| Generic 3-shot | 0.98500 | 0.99 | 0.03 | 0.04 | 0.49952 |
 
 ## QReCC: synthetic answer-as-document proxy (not benchmark retrieval)
 
-| Condition | Proxy MRR@10 | Δ vs zero-shot (95% paired bootstrap CI) | Reader Answer EM |
-| --- | ---: | ---: | ---: |
-| Raw question | 0.82160 | proxy only | 0.05 |
-| Zero-shot | 0.98833 | baseline | 0.02 |
-| Same-data 3-shot | 0.97833 | -0.01000 [-0.03000, 0.00000] | 0.01 |
-| Cross-data 3-shot | 0.98667 | -0.00167 [-0.00500, 0.00000] | 0.03 |
-| Generic 3-shot | 0.98500 | -0.00333 [-0.03000, +0.01842] | 0.03 |
+| Condition | Proxy MRR@10 | Δ vs zero-shot (95% paired bootstrap CI) | Reader Answer EM | Reader Subspan EM |
+| --- | ---: | ---: | ---: | ---: |
+| Raw question | 0.82160 | proxy only | 0.05 | 0.06 |
+| Zero-shot | 0.98833 | baseline | 0.02 | 0.03 |
+| Same-data 3-shot | 0.97833 | -0.01000 [-0.03000, 0.00000] | 0.01 | 0.02 |
+| Cross-data 3-shot | 0.98667 | -0.00167 [-0.00500, 0.00000] | 0.03 | 0.04 |
+| Generic 3-shot | 0.98500 | -0.00333 [-0.03000, +0.01842] | 0.03 | 0.04 |
 
 QReCC's corpus here consists only of synthetic documents made from the 100 gold answer strings. These near-ceiling ranking metrics are **not real QReCC retrieval scores** and must not be presented as such. They only describe ranking behavior within this toy proxy corpus.
 
 ## Protocol and limitations
 
-- MRR@10, Recall/Hit@5 and nDCG@10 evaluate retrieval ranking; Answer EM/F1 evaluate a separate GPT answer reader on the top five retrieved passages. Rewrite F1 is a lexical overlap metric against the gold rewrite and is not the retrieval result.
+- MRR@10, Recall/Hit@5 and nDCG@10 evaluate retrieval ranking; Answer EM/Subspan EM/F1 evaluate a separate GPT answer reader on the top five retrieved passages. Subspan EM is 1 when the normalized gold answer occurs as a contiguous token span in the prediction, allowing surrounding explanation. Rewrite F1 is lexical overlap against the gold rewrite and is not the retrieval result.
 - Pairwise deltas are candidate minus baseline on the same case IDs; 95% intervals use paired bootstrap with seed 42 (1,500 resamples).
 - CANARD uses one fixed 100-case sample and a closed pool with incomplete labels; this is not a full-corpus Wikipedia retrieval benchmark.
 - QReCC uses answer-as-document proxy evidence, not its official 54M-passage retrieval collection. Do not use QReCC proxy scores as benchmark numbers.

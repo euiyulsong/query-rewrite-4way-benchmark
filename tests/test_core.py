@@ -1,7 +1,7 @@
 import pytest
 import json
 from pathlib import Path
-from core import (build_corpus, choose_demos, rewrite_prompt, norm, score_answer,
+from core import (build_corpus, choose_demos, rewrite_prompt, norm, score_answer, subspan_em,
                   retrieval_scores, bootstrap_diff, select_cases, validate_generic_demos, MODES)
 from prepare import qrecc_case, canard_case
 
@@ -60,6 +60,12 @@ def test_bootstrap_matched():
 def test_answer_em():
     assert score_answer('The Blue Fox','blue fox')['em']==1.0
     assert score_answer('blue','blue fox')['f1']>0
+
+
+def test_answer_subspan_em():
+    assert subspan_em('The answer is Blue Fox, a small mammal.', 'blue fox') == 1.0
+    assert subspan_em('blue mammal', 'blue fox') == 0.0
+    assert subspan_em('anything', '  ') == 0.0
 
 
 def test_generic_examples_hand_authored_and_nonoverlapping():

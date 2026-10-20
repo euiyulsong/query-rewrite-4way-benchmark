@@ -13,7 +13,7 @@ import time
 from collections import defaultdict
 from core import (MODES, DATASETS, SYSTEM_REWRITE, SYSTEM_ANSWER, answer_prompt,
                   bootstrap_diff, build_corpus, parse_response, retrieval_scores,
-                  rewrite_prompt, score_answer, validate_generic_demos, stable_hash)
+                  rewrite_prompt, score_answer, subspan_em, validate_generic_demos, stable_hash)
 
 
 def read_jsonl(path):
@@ -96,7 +96,7 @@ class HybridRetriever:
 def summary_and_stats(records, out_dir, model, generic_demo_fingerprint=None):
     import numpy as np
     metrics=('rewrite_em','rewrite_f1','recall_at_5','hit_at_5','mrr_at_10',
-             'ndcg_at_10','answer_em','answer_f1','rewrite_latency_ms',
+             'ndcg_at_10','answer_em','answer_subspan_em','answer_f1','rewrite_latency_ms',
              'retrieval_latency_ms','answer_latency_ms','rewrite_input_tokens','rewrite_output_tokens','answer_input_tokens','answer_output_tokens','total_latency_ms')
     groups=defaultdict(list)
     for r in records:
@@ -126,14 +126,14 @@ def summary_and_stats(records, out_dir, model, generic_demo_fingerprint=None):
             rows=groups.get((ds,condition),[])
             report['paired_differences'][f'{ds}/{condition}_minus_zero_shot']={
                 metric:bootstrap_diff(rows,base,metric) for metric in metrics
-                if metric in ('rewrite_em','rewrite_f1','recall_at_5','mrr_at_10',
-                              'ndcg_at_10','answer_em','answer_f1','rewrite_latency_ms')}
+                 if metric in ('rewrite_em','rewrite_f1','recall_at_5','mrr_at_10',
+                               'ndcg_at_10','answer_em','answer_subspan_em','answer_f1','rewrite_latency_ms')}
     # Case-level paired win/loss/tie rates (same exact input examples).
     for ds in DATASETS:
         zero={x['case_id']:x for x in groups.get((ds,'zero_shot'),[])}
         for mode in MODES[1:]:
             candidate={x['case_id']:x for x in groups.get((ds,mode),[])}
-            for metric in ('rewrite_f1','mrr_at_10','answer_em'):
+            for metric in ('rewrite_f1','mrr_at_10','answer_em','answer_subspan_em'):
                 joined=[(candidate[i][metric],zero[i][metric]) for i in candidate.keys() & zero.keys()
                         if candidate[i].get(metric) is not None and zero[i].get(metric) is not None]
                 wins=sum(a>b for a,b in joined);losses=sum(a<b for a,b in joined)
@@ -147,10 +147,10 @@ def summary_and_stats(records, out_dir, model, generic_demo_fingerprint=None):
     import csv
     with (out/'summary.csv').open('w',newline='',encoding='utf-8') as f:
         writer=csv.writer(f)
-        writer.writerow(['dataset','condition','rewrite_f1','recall_at_5','mrr_at_10','ndcg_at_10','answer_em','answer_f1','rewrite_latency_ms','total_latency_ms','protocol'])
+        writer.writerow(['dataset','condition','rewrite_f1','recall_at_5','mrr_at_10','ndcg_at_10','answer_em','answer_subspan_em','answer_f1','rewrite_latency_ms','total_latency_ms','protocol'])
         for key, r in report['groups'].items():
             ds, mode = key.split('/')
-            writer.writerow([ds,mode]+[r.get(m) for m in ('rewrite_f1','recall_at_5','mrr_at_10','ndcg_at_10','answer_em','answer_f1','rewrite_latency_ms','total_latency_ms','retrieval_protocol')])
+            writer.writerow([ds,mode]+[r.get(m) for m in ('rewrite_f1','recall_at_5','mrr_at_10','ndcg_at_10','answer_em','answer_subspan_em','answer_f1','rewrite_latency_ms','total_latency_ms','retrieval_protocol')])
     print('\nIMPORTANT: QReCC proxy retrieval/QA is synthetic and NOT comparable to official QReCC full-corpus metrics.')
     print('Result files:',(out/'summary.json').resolve())
     return report
@@ -225,7 +225,7 @@ def run(args):
                      'question':case['question'],'retrieval_protocol':protocol,
                      'rewrite_em':None,'rewrite_f1':None,
                      'recall_at_5':None,'hit_at_5':None,'mrr_at_10':None,'ndcg_at_10':None,
-                     'retrieval_latency_ms':None,'answer_em':None,'answer_f1':None,
+                      'retrieval_latency_ms':None,'answer_em':None,'answer_subspan_em':None,'answer_f1':None,
                      'answer_latency_ms':None,'answer_input_tokens':None,'answer_output_tokens':None,'total_latency_ms':None,'answer_error':None}
                 if not obj['rewrite_error']:
                     rewrite=obj['rewrite']
@@ -242,6 +242,7 @@ def run(args):
                                 answer=api.ask('answer',SYSTEM_ANSWER,answer_prompt(rewrite,found[:5]),max_tokens=160)
                                 row['predicted_answer']=answer['text']
                                 row.update({'answer_em':score_answer(answer['text'],case['answer'])['em'],
+                                            'answer_subspan_em':subspan_em(answer['text'],case['answer']),
                                             'answer_f1':score_answer(answer['text'],case['answer'])['f1'],
                                             'answer_latency_ms':answer['latency_ms'],
                                             'answer_input_tokens':answer['input_tokens'],

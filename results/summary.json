@@ -10,6 +10,7 @@
       "mrr_at_10": 0.95278,
       "ndcg_at_10": 0.96456,
       "answer_em": 0.04,
+      "answer_subspan_em": 0.1,
       "answer_f1": 0.23403,
       "rewrite_latency_ms": 1776.6416,
       "retrieval_latency_ms": 79.8629,
@@ -35,6 +36,7 @@
       "mrr_at_10": 0.95,
       "ndcg_at_10": 0.96024,
       "answer_em": 0.02,
+      "answer_subspan_em": 0.1,
       "answer_f1": 0.243,
       "rewrite_latency_ms": 1794.2616,
       "retrieval_latency_ms": 82.1453,
@@ -60,6 +62,7 @@
       "mrr_at_10": 0.30158,
       "ndcg_at_10": 0.37847,
       "answer_em": 0.01,
+      "answer_subspan_em": 0.01,
       "answer_f1": 0.09239,
       "rewrite_latency_ms": 0.0,
       "retrieval_latency_ms": 70.8794,
@@ -85,6 +88,7 @@
       "mrr_at_10": 0.96417,
       "ndcg_at_10": 0.97323,
       "answer_em": 0.02,
+      "answer_subspan_em": 0.1,
       "answer_f1": 0.24897,
       "rewrite_latency_ms": 1890.5966,
       "retrieval_latency_ms": 95.4658,
@@ -110,6 +114,7 @@
       "mrr_at_10": 0.95917,
       "ndcg_at_10": 0.96954,
       "answer_em": 0.03,
+      "answer_subspan_em": 0.11,
       "answer_f1": 0.24429,
       "rewrite_latency_ms": 1663.5159,
       "retrieval_latency_ms": 78.4731,
@@ -135,6 +140,7 @@
       "mrr_at_10": 0.98667,
       "ndcg_at_10": 0.99,
       "answer_em": 0.03,
+      "answer_subspan_em": 0.04,
       "answer_f1": 0.49679,
       "rewrite_latency_ms": 1904.1386,
       "retrieval_latency_ms": 20.6832,
@@ -160,6 +166,7 @@
       "mrr_at_10": 0.985,
       "ndcg_at_10": 0.98631,
       "answer_em": 0.03,
+      "answer_subspan_em": 0.04,
       "answer_f1": 0.49952,
       "rewrite_latency_ms": 1906.8287,
       "retrieval_latency_ms": 20.1538,
@@ -185,6 +192,7 @@
       "mrr_at_10": 0.8216,
       "ndcg_at_10": 0.85365,
       "answer_em": 0.05,
+      "answer_subspan_em": 0.06,
       "answer_f1": 0.29898,
       "rewrite_latency_ms": 0.0,
       "retrieval_latency_ms": 19.3946,
@@ -210,6 +218,7 @@
       "mrr_at_10": 0.97833,
       "ndcg_at_10": 0.98131,
       "answer_em": 0.01,
+      "answer_subspan_em": 0.02,
       "answer_f1": 0.45129,
       "rewrite_latency_ms": 1736.5455,
       "retrieval_latency_ms": 19.9605,
@@ -235,6 +244,7 @@
       "mrr_at_10": 0.98833,
       "ndcg_at_10": 0.99131,
       "answer_em": 0.02,
+      "answer_subspan_em": 0.03,
       "answer_f1": 0.48005,
       "rewrite_latency_ms": 1838.7499,
       "retrieval_latency_ms": 21.1102,
@@ -296,6 +306,14 @@
         ]
       },
       "answer_em": {
+        "n": 100,
+        "delta": -0.01,
+        "ci95": [
+          -0.03,
+          0.0
+        ]
+      },
+      "answer_subspan_em": {
         "n": 100,
         "delta": -0.01,
         "ci95": [
@@ -369,6 +387,14 @@
           0.03
         ]
       },
+      "answer_subspan_em": {
+        "n": 100,
+        "delta": 0.01,
+        "ci95": [
+          0.0,
+          0.03
+        ]
+      },
       "answer_f1": {
         "n": 100,
         "delta": 0.01674,
@@ -428,6 +454,14 @@
         ]
       },
       "answer_em": {
+        "n": 100,
+        "delta": 0.01,
+        "ci95": [
+          -0.02,
+          0.05
+        ]
+      },
+      "answer_subspan_em": {
         "n": 100,
         "delta": 0.01,
         "ci95": [
@@ -501,6 +535,14 @@
           0.0
         ]
       },
+      "answer_subspan_em": {
+        "n": 100,
+        "delta": -0.01,
+        "ci95": [
+          -0.05,
+          0.02
+        ]
+      },
       "answer_f1": {
         "n": 100,
         "delta": 0.00468,
@@ -565,6 +607,14 @@
         "ci95": [
           0.0,
           0.03
+        ]
+      },
+      "answer_subspan_em": {
+        "n": 100,
+        "delta": -0.01,
+        "ci95": [
+          -0.05,
+          0.02
         ]
       },
       "answer_f1": {
@@ -633,6 +683,14 @@
           0.0
         ]
       },
+      "answer_subspan_em": {
+        "n": 100,
+        "delta": -0.01,
+        "ci95": [
+          -0.05,
+          0.02
+        ]
+      },
       "answer_f1": {
         "n": 100,
         "delta": -0.00129,
@@ -677,6 +735,12 @@
       "losses": 1,
       "ties": 99
     },
+    "qrecc/same_3shot/answer_subspan_em": {
+      "n": 100,
+      "wins": 0,
+      "losses": 1,
+      "ties": 99
+    },
     "qrecc/cross_3shot/rewrite_f1": {
       "n": 100,
       "wins": 22,
@@ -690,6 +754,12 @@
       "ties": 99
     },
     "qrecc/cross_3shot/answer_em": {
+      "n": 100,
+      "wins": 1,
+      "losses": 0,
+      "ties": 99
+    },
+    "qrecc/cross_3shot/answer_subspan_em": {
       "n": 100,
       "wins": 1,
       "losses": 0,
@@ -713,6 +783,12 @@
       "losses": 1,
       "ties": 97
     },
+    "qrecc/generic_3shot/answer_subspan_em": {
+      "n": 100,
+      "wins": 2,
+      "losses": 1,
+      "ties": 97
+    },
     "canard/same_3shot/rewrite_f1": {
       "n": 100,
       "wins": 43,
@@ -730,6 +806,12 @@
       "wins": 0,
       "losses": 1,
       "ties": 99
+    },
+    "canard/same_3shot/answer_subspan_em": {
+      "n": 100,
+      "wins": 1,
+      "losses": 2,
+      "ties": 97
     },
     "canard/cross_3shot/rewrite_f1": {
       "n": 100,
@@ -749,6 +831,12 @@
       "losses": 0,
       "ties": 99
     },
+    "canard/cross_3shot/answer_subspan_em": {
+      "n": 100,
+      "wins": 1,
+      "losses": 2,
+      "ties": 97
+    },
     "canard/generic_3shot/rewrite_f1": {
       "n": 100,
       "wins": 47,
@@ -766,6 +854,12 @@
       "wins": 0,
       "losses": 1,
       "ties": 99
+    },
+    "canard/generic_3shot/answer_subspan_em": {
+      "n": 100,
+      "wins": 1,
+      "losses": 2,
+      "ties": 97
     }
   }
 }

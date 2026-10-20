@@ -41,6 +41,20 @@ def score_answer(pred: str, gold: str) -> dict:
     return {'em': float(norm(pred) == norm(gold)), 'f1': token_f1(pred, gold)}
 
 
+def subspan_em(pred: str, gold: str) -> float:
+    """Return 1 when the normalized gold answer occurs as a contiguous token span.
+
+    This relaxes strict exact match for predictions that include a short answer
+    span with surrounding explanatory text. An empty normalized gold is invalid.
+    """
+    target = norm(gold).split()
+    tokens = norm(pred).split()
+    if not target:
+        return 0.0
+    width = len(target)
+    return float(any(tokens[i:i + width] == target for i in range(len(tokens) - width + 1)))
+
+
 def serialize_case(case: dict) -> str:
     turns = case['history']
     hist = '\n'.join(f'{i+1}. {t}' for i,t in enumerate(turns)) if turns else '(none)'

@@ -120,7 +120,7 @@ That JSONL must contain `{ "id": "<original QReCC Truth_passages ID>", "text": "
 - n=100 **per dataset** is a small benchmark; use **paired bootstrap 95% CI** and report confidence intervals.
 - Results are paired by case ID with missing/failed calls excluded (coverage and error counts are exported). Failed cases are not silently scored as zero.
 - Rewrite **EM/F1** is reference-text overlap, not semantic equivalence; rank and QA quality matter more.
-- Reader EM is strict normalized answer match; inspect token-F1 and qualitative examples as well.
+- Reader EM is strict normalized answer match. Answer Subspan EM is 1 when the normalized gold answer occurs as a contiguous token span in the prediction; it allows surrounding explanation but does not allow reordered or partial answer tokens. Inspect token-F1 and qualitative examples as well.
 - Model API latency is measured at runtime and cached, so re-runs preserve the **original** measured latency, not a zero-latency cache hit.
 - For CANARD, extracted answer strings may have multiple valid paraphrases; strict answer EM underestimates semantic correctness.
 - Fixed demonstration quality, prompt length, and domain differences are potential confounders. Generic demonstrations are manually authored (not sampled), which controls train-set overlap but introduces an example-style confound. Repeat with alternative demo sets for stronger conclusions.
