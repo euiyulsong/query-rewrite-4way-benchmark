@@ -1,0 +1,681 @@
+{
+  "model": "gpt-6-luna",
+  "generic_demo_fingerprint": "9d413f08b496d831",
+  "groups": {
+    "canard/cross_3shot": {
+      "rewrite_em": 0.1,
+      "rewrite_f1": 0.72294,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 1776.6416,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 561.99,
+      "rewrite_output_tokens": 18.62,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 1776.6416,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "closed_pool_gold_context_plus_provided_distractors",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "canard/generic_3shot": {
+      "rewrite_em": 0.2,
+      "rewrite_f1": 0.77484,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 1794.2616,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 376.99,
+      "rewrite_output_tokens": 18.14,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 1794.2616,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "closed_pool_gold_context_plus_provided_distractors",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "canard/raw_question": {
+      "rewrite_em": 0.16,
+      "rewrite_f1": 0.72911,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 0.0,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 0.0,
+      "rewrite_output_tokens": 0.0,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 0.0,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "closed_pool_gold_context_plus_provided_distractors",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "canard/same_3shot": {
+      "rewrite_em": 0.16,
+      "rewrite_f1": 0.7257,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 1890.5966,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 671.99,
+      "rewrite_output_tokens": 20.19,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 1890.5966,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "closed_pool_gold_context_plus_provided_distractors",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "canard/zero_shot": {
+      "rewrite_em": 0.1,
+      "rewrite_f1": 0.69143,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 1663.5159,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 192.99,
+      "rewrite_output_tokens": 20.96,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 1663.5159,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "closed_pool_gold_context_plus_provided_distractors",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "qrecc/cross_3shot": {
+      "rewrite_em": 0.26,
+      "rewrite_f1": 0.78816,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 1904.1386,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 657.25,
+      "rewrite_output_tokens": 16.73,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 1904.1386,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "rewrite_only",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "qrecc/generic_3shot": {
+      "rewrite_em": 0.32,
+      "rewrite_f1": 0.82848,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 1906.8287,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 362.25,
+      "rewrite_output_tokens": 14.93,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 1906.8287,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "rewrite_only",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "qrecc/raw_question": {
+      "rewrite_em": 0.0,
+      "rewrite_f1": 0.63913,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 0.0,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 0.0,
+      "rewrite_output_tokens": 0.0,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 0.0,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "rewrite_only",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "qrecc/same_3shot": {
+      "rewrite_em": 0.24,
+      "rewrite_f1": 0.79394,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 1736.5455,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 547.25,
+      "rewrite_output_tokens": 15.64,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 1736.5455,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "rewrite_only",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    },
+    "qrecc/zero_shot": {
+      "rewrite_em": 0.23,
+      "rewrite_f1": 0.79004,
+      "recall_at_5": null,
+      "hit_at_5": null,
+      "mrr_at_10": null,
+      "ndcg_at_10": null,
+      "answer_em": null,
+      "answer_f1": null,
+      "rewrite_latency_ms": 1838.7499,
+      "retrieval_latency_ms": null,
+      "answer_latency_ms": null,
+      "rewrite_input_tokens": 178.25,
+      "rewrite_output_tokens": 16.25,
+      "answer_input_tokens": null,
+      "answer_output_tokens": null,
+      "total_latency_ms": 1838.7499,
+      "evaluated_cases": 100,
+      "rewrite_completed": 100,
+      "answers_completed": 0,
+      "retrieval_completed": 0,
+      "retrieval_protocol": "rewrite_only",
+      "rewrite_errors": 0,
+      "answer_errors": 0
+    }
+  },
+  "paired_differences": {
+    "qrecc/same_3shot_minus_zero_shot": {
+      "rewrite_em": {
+        "n": 100,
+        "delta": 0.01,
+        "ci95": [
+          -0.07,
+          0.09
+        ]
+      },
+      "rewrite_f1": {
+        "n": 100,
+        "delta": 0.0039,
+        "ci95": [
+          -0.02304,
+          0.03194
+        ]
+      },
+      "recall_at_5": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "mrr_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "ndcg_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_em": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_f1": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "rewrite_latency_ms": {
+        "n": 100,
+        "delta": -102.2044,
+        "ci95": [
+          -416.61383,
+          210.70265
+        ]
+      }
+    },
+    "qrecc/cross_3shot_minus_zero_shot": {
+      "rewrite_em": {
+        "n": 100,
+        "delta": 0.03,
+        "ci95": [
+          -0.03,
+          0.1
+        ]
+      },
+      "rewrite_f1": {
+        "n": 100,
+        "delta": -0.00188,
+        "ci95": [
+          -0.02316,
+          0.01896
+        ]
+      },
+      "recall_at_5": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "mrr_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "ndcg_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_em": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_f1": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "rewrite_latency_ms": {
+        "n": 100,
+        "delta": 65.3887,
+        "ci95": [
+          -359.69856,
+          498.8023
+        ]
+      }
+    },
+    "qrecc/generic_3shot_minus_zero_shot": {
+      "rewrite_em": {
+        "n": 100,
+        "delta": 0.09,
+        "ci95": [
+          0.02,
+          0.17
+        ]
+      },
+      "rewrite_f1": {
+        "n": 100,
+        "delta": 0.03844,
+        "ci95": [
+          0.01206,
+          0.06632
+        ]
+      },
+      "recall_at_5": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "mrr_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "ndcg_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_em": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_f1": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "rewrite_latency_ms": {
+        "n": 100,
+        "delta": 68.0788,
+        "ci95": [
+          -348.02314,
+          497.78495
+        ]
+      }
+    },
+    "canard/same_3shot_minus_zero_shot": {
+      "rewrite_em": {
+        "n": 100,
+        "delta": 0.06,
+        "ci95": [
+          0.01,
+          0.12
+        ]
+      },
+      "rewrite_f1": {
+        "n": 100,
+        "delta": 0.03428,
+        "ci95": [
+          0.00765,
+          0.06327
+        ]
+      },
+      "recall_at_5": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "mrr_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "ndcg_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_em": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_f1": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "rewrite_latency_ms": {
+        "n": 100,
+        "delta": 227.0807,
+        "ci95": [
+          -108.82373,
+          557.69385
+        ]
+      }
+    },
+    "canard/cross_3shot_minus_zero_shot": {
+      "rewrite_em": {
+        "n": 100,
+        "delta": 0.0,
+        "ci95": [
+          -0.03,
+          0.03
+        ]
+      },
+      "rewrite_f1": {
+        "n": 100,
+        "delta": 0.03151,
+        "ci95": [
+          0.00357,
+          0.05978
+        ]
+      },
+      "recall_at_5": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "mrr_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "ndcg_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_em": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_f1": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "rewrite_latency_ms": {
+        "n": 100,
+        "delta": 113.1257,
+        "ci95": [
+          -251.70661,
+          468.6313
+        ]
+      }
+    },
+    "canard/generic_3shot_minus_zero_shot": {
+      "rewrite_em": {
+        "n": 100,
+        "delta": 0.1,
+        "ci95": [
+          0.04,
+          0.17
+        ]
+      },
+      "rewrite_f1": {
+        "n": 100,
+        "delta": 0.08341,
+        "ci95": [
+          0.05477,
+          0.11518
+        ]
+      },
+      "recall_at_5": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "mrr_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "ndcg_at_10": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_em": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "answer_f1": {
+        "n": 0,
+        "delta": null,
+        "ci95": null
+      },
+      "rewrite_latency_ms": {
+        "n": 100,
+        "delta": 130.7457,
+        "ci95": [
+          -182.66637,
+          447.56326
+        ]
+      }
+    }
+  },
+  "warnings": [
+    "QReCC proxy scores use gold ANSWERS as synthetic evidence and are NOT official retrieval / end-to-end QA benchmarks.",
+    "CANARD closed-pool retrieval includes test gold contexts and dataset-provided distractors; not full-corpus Wikipedia evaluation.",
+    "Unlabeled relevant distractors may exist; top-k qrels are incomplete.",
+    "No-rewrite has 0 rewrite API latency; comparisons of total latency should include answer calls.",
+    "Generic few-shot uses 3 fixed hand-authored synthetic examples, identical for both datasets; example content/length may confound differences."
+  ],
+  "case_level_comparison": {
+    "qrecc/same_3shot/rewrite_f1": {
+      "n": 100,
+      "wins": 29,
+      "losses": 25,
+      "ties": 46
+    },
+    "qrecc/same_3shot/mrr_at_10": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "qrecc/same_3shot/answer_em": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "qrecc/cross_3shot/rewrite_f1": {
+      "n": 100,
+      "wins": 22,
+      "losses": 19,
+      "ties": 59
+    },
+    "qrecc/cross_3shot/mrr_at_10": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "qrecc/cross_3shot/answer_em": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "qrecc/generic_3shot/rewrite_f1": {
+      "n": 100,
+      "wins": 33,
+      "losses": 10,
+      "ties": 57
+    },
+    "qrecc/generic_3shot/mrr_at_10": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "qrecc/generic_3shot/answer_em": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "canard/same_3shot/rewrite_f1": {
+      "n": 100,
+      "wins": 43,
+      "losses": 22,
+      "ties": 35
+    },
+    "canard/same_3shot/mrr_at_10": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "canard/same_3shot/answer_em": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "canard/cross_3shot/rewrite_f1": {
+      "n": 100,
+      "wins": 38,
+      "losses": 25,
+      "ties": 37
+    },
+    "canard/cross_3shot/mrr_at_10": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "canard/cross_3shot/answer_em": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "canard/generic_3shot/rewrite_f1": {
+      "n": 100,
+      "wins": 47,
+      "losses": 13,
+      "ties": 40
+    },
+    "canard/generic_3shot/mrr_at_10": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    },
+    "canard/generic_3shot/answer_em": {
+      "n": 0,
+      "wins": 0,
+      "losses": 0,
+      "ties": 0
+    }
+  }
+}

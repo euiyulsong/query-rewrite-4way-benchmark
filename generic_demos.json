@@ -1,0 +1,34 @@
+[
+  {
+    "id": "generic:coreference",
+    "type": "coreference_resolution",
+    "history": [
+      "Tell me about the red panda.",
+      "The red panda is a mammal native to the eastern Himalayas."
+    ],
+    "question": "Where does it live?",
+    "gold_rewrite": "Where does the red panda live?"
+  },
+  {
+    "id": "generic:ellipsis",
+    "type": "ellipsis_and_parallel_question",
+    "history": [
+      "When was the Hubble Space Telescope launched?",
+      "The Hubble Space Telescope was launched in 1990."
+    ],
+    "question": "What about the James Webb Space Telescope?",
+    "gold_rewrite": "When was the James Webb Space Telescope launched?"
+  },
+  {
+    "id": "generic:topic_shift",
+    "type": "topic_switching",
+    "history": [
+      "Tell me about the city of Sydney.",
+      "Sydney is a city in Australia.",
+      "Now let's discuss the Amazon River.",
+      "The Amazon River runs through South America."
+    ],
+    "question": "How long is it?",
+    "gold_rewrite": "How long is the Amazon River?"
+  }
+]

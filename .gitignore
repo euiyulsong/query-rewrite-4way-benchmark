@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+data/*.json
+results/*
+!results/summary.json
+!results/summary.csv
+!results/records.jsonl
+!results/rewrites.jsonl
+!results/report.html
+!results/EXPERIMENT.md

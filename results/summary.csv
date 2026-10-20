@@ -1,0 +1,11 @@
+dataset,condition,rewrite_f1,recall_at_5,mrr_at_10,ndcg_at_10,answer_em,answer_f1,rewrite_latency_ms,total_latency_ms,protocol
+canard,cross_3shot,0.72294,,,,,,1776.6416,1776.6416,closed_pool_gold_context_plus_provided_distractors
+canard,generic_3shot,0.77484,,,,,,1794.2616,1794.2616,closed_pool_gold_context_plus_provided_distractors
+canard,raw_question,0.72911,,,,,,0.0,0.0,closed_pool_gold_context_plus_provided_distractors
+canard,same_3shot,0.7257,,,,,,1890.5966,1890.5966,closed_pool_gold_context_plus_provided_distractors
+canard,zero_shot,0.69143,,,,,,1663.5159,1663.5159,closed_pool_gold_context_plus_provided_distractors
+qrecc,cross_3shot,0.78816,,,,,,1904.1386,1904.1386,rewrite_only
+qrecc,generic_3shot,0.82848,,,,,,1906.8287,1906.8287,rewrite_only
+qrecc,raw_question,0.63913,,,,,,0.0,0.0,rewrite_only
+qrecc,same_3shot,0.79394,,,,,,1736.5455,1736.5455,rewrite_only
+qrecc,zero_shot,0.79004,,,,,,1838.7499,1838.7499,rewrite_only
